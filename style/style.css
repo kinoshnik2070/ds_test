@@ -1,0 +1,137 @@
+html, body {
+    width: 100%;
+    height:100%;
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+}
+
+.l-layout {
+    width: 640px;
+    /height: 100%;
+    .border: 1px solid black;
+    box-sizing:border-box;
+    padding: 30px;
+    margin: 0 auto;
+}
+
+.l-list {
+    margin-top: 20px;
+}
+.l-list .b-list_item__container {
+    margin-top: 20px;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    font-size: 0px;
+}
+
+.l-list .b-list_item__container li {
+    width: 100px;
+    display: inline-block;
+    /border: 1px solid black;
+    margin-right: 60px;
+    margin-top: 20px;
+    font-size: 0px;
+    box-sizing: border-box;
+}
+
+.l-list .b-list_item__container li.b-last{
+    margin-right: 0px;
+}
+
+.l-list .b-list_item__container li img {
+    width: 100px;
+}
+
+.l-footer {
+    width: 100%;
+} 
+
+.b-count_serch {
+    display: inline-block;
+}
+
+
+.l-footer {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.b-control_pagination {
+    display: inline-block;
+    position: relative;
+    right: 0px;
+    margin: 0px;
+    padding: 0px;
+    float: right;
+    font-size: 16px;
+}
+
+.b-control_pagination li {
+    display: inline-block;
+}
+
+.b-control_pagination .b-control_disabled a {
+    color: gray;
+    text-decoration: none;
+    cursor: default;
+}
+
+.b-separator {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+a:visited {
+    color: black;
+}
+
+.g-load {
+    background-color: gray;
+    opacity: 0.5;
+    overflow: hidden;
+    z-index: 9999;
+    display: none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+}
+
+.g-preload {
+    background-image: url('../image/350 (1).GIF');
+    width:50px;
+    height:50px;
+    left:50%;
+    top:50%;
+    width:50px;
+    height:50px;
+    margin-left:-25px;
+    margin-top:-25px;
+    position: absolute;
+}
+
+.g-fixed_over_screen {
+    overflow: hidden;
+}
+
+.b-details_popup {
+    background-color:white;
+    display:block;
+    z-index:9999;
+    position:absolute;
+    top:0px;
+    left:0px;
+}
+
+.b-details__key {
+    vertical-align: top;
+    padding-right: 20px;
+}
+
+.b-details__value {
+    max-width: 200px;
+}
+
