@@ -10,10 +10,10 @@
             mediaImageLarge: "/api/mediaitems/{{=it.id}}/thumbnail?size=large"
         },
         requestDebug: {
-            mediaItems: "/data/mediaitems.xml",
-            mediaImageSmall: "/data/thumbnail_small.jpg",
-            mediaImageMedium: "/data/thumbnail_medium.jpg",
-            mediaImageLarge: "/data/thumbnail_large.jpg"
+            mediaItems: "data/mediaitems.xml",
+            mediaImageSmall: "data/thumbnail_small.jpg",
+            mediaImageMedium: "data/thumbnail_medium.jpg",
+            mediaImageLarge: "data/thumbnail_large.jpg"
         },
         run: function () {
             var key;
