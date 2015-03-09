@@ -1,0 +1,16 @@
+{
+  "name": "ds_test",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kinoshnik2070",
+  "license": "ISC",
+    "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-jslint": "^0.2.2",
+    "gulp.spritesmith": "^2.5.0"
+  }
+}
