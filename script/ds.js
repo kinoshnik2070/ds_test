@@ -3,7 +3,7 @@
     "use strict";
 
     w.ds = {
-        debugMode: false
+        debugMode: true
     };
     w.ds.gui = {
         alert: function(message) {
