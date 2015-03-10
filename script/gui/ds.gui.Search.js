@@ -4,8 +4,9 @@
 
     ds.gui.Search = function (options) {
         ds.Observer.apply(this, arguments);
-        options = options || {};
+
         this._init = function () {
+            options = options || {};
             this._container = $(".j-search");
             this._source = options.source || [];
             this._tags = [];

@@ -32,6 +32,7 @@ $(function () {
             });
             this.search.on("search", function (tags) {
                 var store = self.itemStore.search(tags);
+                self.listItems.reset();
                 self.listItems.render(store);
             });
         };

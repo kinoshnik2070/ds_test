@@ -14,7 +14,7 @@
             this._pagination = {
                 current: 0,
                 count: 0,
-                maxItem: 16
+                maxItem: 12
             };
             this._initEvents();
             this.clsDisabledControl = "b-control_disabled";
@@ -63,6 +63,10 @@
                 itemLength: data.length,
                 imageTemplate: this._templates.imageSmall
             }));
+        };
+
+        this.reset = function () {
+            this._pagination.current = 0;
         };
 
         this.getLayout = function () {
