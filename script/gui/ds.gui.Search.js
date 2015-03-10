@@ -40,7 +40,7 @@
                 self.renderTags();
                 self.emit("search", self._tags);
             });
-            this._autocomplete.on("select", function(tag) {
+            this._autocomplete.on("select", function (tag) {
                 if (self._tags.indexOf(tag) === -1) {
                     self._tags.push(tag);
                     self.renderTags();
@@ -49,8 +49,6 @@
             });
         };
 
-
-
         this.renderTags = function () {
             this.getLayout().html(this._template.search({
                 tags: this._tags
@@ -58,7 +56,7 @@
         };
 
         this.setTags = function (arr) {
-            this._autocomplete._source = arr;
+            this._autocomplete.source = arr;
         };
 
         this._init();

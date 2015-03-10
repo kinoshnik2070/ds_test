@@ -17,20 +17,20 @@ $(function () {
 
         this._initEvents = function () {
             var self = this;
-            this.itemStore.on("load", function (result) {
+            this.itemStore.on("load", function () {
                 self.hideInfiniteProgress();
                 self.search.setTags(self.itemStore._keywords);
                 self.listItems.render();
             });
-            this.itemStore.on("errorLoad", function() {
+            this.itemStore.on("errorLoad", function () {
                 self.hideInfiniteProgress();
-                ds.gui.alert("Ошибка загрузки")
+                ds.gui.alert("Ошибка загрузки");
             });
-            this.listItems.on("selectitem", function(id) {
+            this.listItems.on("selectitem", function (id) {
                 var model = self.itemStore.get(id);
                 self.detailsItem.render(model);
             });
-            this.search.on("search", function(tags) {
+            this.search.on("search", function (tags) {
                 var store = self.itemStore.search(tags);
                 self.listItems.render(store);
             });

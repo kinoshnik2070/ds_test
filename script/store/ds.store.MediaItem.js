@@ -25,7 +25,7 @@
                     self._initKeywords();
                     self.emit("load", self._data);
                 },
-                error: function() {
+                error: function () {
                     self.emit("errorLoad");
                 }
             });
@@ -37,18 +37,12 @@
                 obj = {},
                 i,
                 j,
-                tagValues,
-                tmplImageSmallUrl = doT.template(ds.config.request.mediaImageSmall),
-                tmplImageMediumUrl = doT.template(ds.config.request.mediaImageMedium),
-                tmplImageLargeUrl = doT.template(ds.config.request.mediaImageLarge);
+                tagValues;
             for (i = 0; i < mediItems.length; i++) {
                 item = mediItems[i];
                 obj = {};
                 obj.id = parseInt(item.getAttribute("id"), 10);
                 obj.uri = item.getAttribute("uri");
-                obj.urlImageSmall = tmplImageSmallUrl(obj);
-                obj.urlImageMedium = tmplImageMediumUrl(obj);
-                obj.urlImageLarge = tmplImageLargeUrl(obj);
                 tagValues = item.getElementsByTagName("tagValue");
                 for (j = 0; j < tagValues.length; j++) {
                     obj[tagValues[j].getAttribute("name")] = tagValues[j].getAttribute("formattedValue");
@@ -57,24 +51,25 @@
             }
         };
 
-        this.get = function(id) {
+        this.get = function (id) {
             var i;
-            for(i = 0; i < this._data.length; i++) {
-                if(id === this._data[i].id) {
+            for (i = 0; i < this._data.length; i++) {
+                if (id === this._data[i].id) {
                     return this._data[i];
                 }
             }
             return false;
         };
 
-        this._initKeywords = function() {
+        this._initKeywords = function () {
             var i,
-                search = {};
-            for(i = 0; i < this._data.length; i++) {
-                if(this._data[i]["Keywords"]) {
-                    var keywords = this._data[i]["Keywords"].split(",");
-                    for(var j = 0; j < keywords.length; j++) {
-                        if(!this._keywords[keywords[j].trim()]) {
+                j,
+                keywords;
+            for (i = 0; i < this._data.length; i++) {
+                if (this._data[i]["Keywords"]) {
+                    keywords = this._data[i]["Keywords"].split(",");
+                    for (j = 0; j < keywords.length; j++) {
+                        if (!this._keywords[keywords[j].trim()]) {
                             this._keywords[keywords[j].trim()] = [];
                         }
                         this._keywords[keywords[j].trim()].push(this._data[i]["id"]);
@@ -83,32 +78,36 @@
             }
         };
 
-        this.search = function(tags) {
-            if(!tags || tags.length === 0) {
+        this.search = function (tags) {
+            if (!tags || tags.length === 0) {
                 return [];
             }
-            var result = [];
-            for(var i = 0; i < tags.length; i++) {
-                result = result.concat(this._keywords[tags[i]]);
-            }
-            var r = []
-            for(var j = 0; j < result.length; j++) {
-                var id = result[j]; 
-                if(!id) {
-                    continue;
-                }
-                var arr = result.filter(function(value) {
-                    if(value === id) {
-                        result[j] = false;
+            var result = [],
+                i,
+                r,
+                id,
+                arr,
+                filter = function (value) {
+                    if (value === id) {
+                        result[i] = false;
                         return value;
                     }
-                });
-                if(arr.length === tags.length) {
-                    r.push(this.get(id));
+                };
+            for (i = 0; i < tags.length; i++) {
+                result = result.concat(this._keywords[tags[i]]);
+            }
+            r = [];
+            for (i = 0; i < result.length; i++) {
+                id = result[i];
+                if (id) {
+                    arr = result.filter(filter);
+                    if (arr.length === tags.length) {
+                        r.push(this.get(id));
+                    }
                 }
             }
             return r;
-        }
+        };
     };
 
 }());

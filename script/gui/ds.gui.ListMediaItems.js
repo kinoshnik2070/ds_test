@@ -2,13 +2,14 @@
 
     "use strict";
 
-    ds.gui.ListMediaItems = function (options) {
+    ds.gui.ListMediaItems = function () {
         ds.Observer.apply(this, arguments);
 
         this._init = function () {
             this._container = $(".j-list_media_item");
             this._templates = {
-                item: doT.template($("#list-media-items").html())
+                item: doT.template($("#list-media-items").html()),
+                imageSmall: doT.template(ds.config.request.mediaImageSmall)
             };
             this._pagination = {
                 current: 0,
@@ -23,8 +24,6 @@
         this._initEvents = function () {
             var self = this;
 
-
-
             this.getLayout().on("click", ".b-nex_page", function () {
                 if (!$(this).hasClass(self.clsDisabledControl)) {
                     self._pagination.current++;
@@ -38,18 +37,18 @@
                     self.render(this._result);
                 }
             });
-            
-            this.getLayout().on("click", ".b-list_item__container li", function() {
+
+            this.getLayout().on("click", ".b-list_item__container li", function () {
                 self.emit("selectitem", $(this).data("item_id"));
             });
         };
 
         this.render = function (data) {
-
             var result = [],
                 start = this._pagination.current * this._pagination.maxItem,
                 i;
-            if(data) {
+
+            if (data) {
                 this._result = data;
             } else {
                 data = this._result;
@@ -61,7 +60,8 @@
             this.getLayout().html(this._templates.item({
                 result: result,
                 pagination: this._pagination,
-                itemLength: data.length
+                itemLength: data.length,
+                imageTemplate: this._templates.imageSmall
             }));
         };
 

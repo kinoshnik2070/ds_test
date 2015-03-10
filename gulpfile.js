@@ -12,7 +12,8 @@ gulp.task("jslint", function () {
     ]).pipe(jslint({
         global: ["ds", "$", "doT", "document", "window"],
         nomen: true,
-        plusplus: true
+        plusplus: true,
+        sub: true
     }));
 });
 

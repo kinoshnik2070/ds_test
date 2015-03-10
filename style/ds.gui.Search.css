@@ -8,6 +8,7 @@
     width: 100%;
     padding-right: 120px;
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
     float: left;
 }
 
@@ -16,21 +17,29 @@
     height: 100%;
     display: inline-block;
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
     position: absolute;
     right: 0px;
     text-align: right;
     line-height: 30px;
     text-decoration: none;
+    color: #0078c7;
+}
+
+.b-search__clear:visited {
+    color: #0078c7;
 }
 
 .b-search {
     height: 100%;
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
 
 .b-search input {
     height: 100%;
-    box-sizing:border-box;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
     border: none;
     background-color: transparent;
 }
@@ -50,6 +59,7 @@
     padding-right: 5px;
     padding-bottom: 3px;
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
 
 .b-tag__container li {
@@ -63,6 +73,7 @@
     height: 100%;
     line-height: 22px;
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
     padding-left: 2px;
     margin-right: 4px;
     padding-right: 2px;

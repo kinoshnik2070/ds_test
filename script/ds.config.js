@@ -18,7 +18,9 @@
         run: function () {
             var key;
             for (key in this.request) {
-                this.request[key] = (ds.debugMode ? this.requestDebug[key] : this.request[key]);
+                if (this.request.hasOwnProperty(key)) {
+                    this.request[key] = (ds.debugMode ? this.requestDebug[key] : this.request[key]);
+                }
             }
         }
     };

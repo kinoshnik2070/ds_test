@@ -5,21 +5,20 @@
         <link rel="stylesheet" href="style/ds.gui.DetailsItem.css" />
         <link rel="stylesheet" href="style/ds.gui.ListMediaItems.css" />
         <link rel="stylesheet" href="style/ds.gui.Search.css" />
-        <link rel="stylesheet" href="style/b-autocomplete.css" />      
+        <link rel="stylesheet" href="style/ds.gui.Autocomplete.css" />      
         <meta charset="utf-8" />
     </head>
     <body>
-       <div class="j-page" style="width:100%;position:relative;min-height:100%;">
+       <div class="l-page j-page">
             <div class="l-layout">
                 <div class="l-search">
                     <div class="b-search__container j-search"></div>
                     <a class="b-search__clear" href="#">Очистить</a>
                 </div>
-                <div style="clear:both;"></div>
+                <div class="g-clear"></div>
                 <div class="l-list j-list_media_item"></div>
             </div>
         </div>
-     
        <div class="g-load j-load">
             <div class="g-preload"></div>
         </div>
@@ -51,7 +50,7 @@
                 </li>
             {{~}}
             <li class="b-search">
-                <input type="text" />
+                <input type="text" class="j-query" />
             </li>
         </ul>
     </script>
@@ -65,15 +64,14 @@
         {{??}}
             <div class="b-item__not_found">not found</div>
         {{?}}
-
     </script>
     <script type="text/template" id="list-media-items">
       {{? it.result.length > 0}}
           <ul class="b-list_item__container">
               {{~it.result :value:index}}
                   <li data-item_id={{=value.id}} class="{{? (index+1) % 4 ==0}}b-last{{?}}">
-                      <img src={{=value.urlImageSmall}} />
-                      <div style="font-size:12px;text-align:center;">{{=value["Filename"]}}</div>
+                      <img src={{=it.imageTemplate(value)}} />
+                      <div class="b-file_name">{{=value["Filename"]}}</div>
                   </li>
               {{~}}
           </ul>
@@ -98,33 +96,33 @@
     </script>
     <script type="text/template" id="details-item">
         <div class="g-load j-overflow_details" style="display: block;"></div>
-        <div class="b-details_popup j-details_popup">
-            <div style="padding: 20px;background-color:white;box-sizing:border-box;">
-                <img src="{{=it.urlImageLarge}}">
+        <div class="l-details_popup j-details_popup">
+            <div class="b-details_popup">
+                <img src="{{=it.imageUrl}}">
                 <table>
                     <tr>
                         <td class="b-details__key">Filename:</span>
-                        <td class="b-details__value">{{=it.Filename}}</td>
+                        <td class="b-details__value">{{=it.item["Filename"]}}</td>
                     </tr>
                     <tr>
                         <td class="b-details__key">Dimension:</span>
-                        <td class="b-details__value">{{=it["Width"]}}x{{=it["Height"]}}x{{=it["Color Depth"]}}</td>
+                        <td class="b-details__value">{{=it.item["Width"]}}x{{=it.item["Height"]}}x{{=it.item["Color Depth"]}}</td>
                     </tr>
                     <tr>
                         <td class="b-details__key">Create Date:</span>
-                        <td class="b-details__value">{{=it["Creation Datetime"]}}</td>
+                        <td class="b-details__value">{{=it.item["Creation Datetime"]}}</td>
                     </tr>
                     <tr>
                         <td class="b-details__key">Keywords:</span>
-                        <td class="b-details__value">{{=it["Keywords"]}}</td>
+                        <td class="b-details__value">{{=it.item["Keywords"]}}</td>
                     </tr>
                     <tr>
-                        <td class="b-details__key">Copyright</span>
-                        <td class="b-details__value"></td>
+                        <td class="b-details__key">Copyright:</span>
+                        <td class="b-details__value">{{=it.item["Copyright"]}}</td>
                     </tr>
                 </table>
-                <div style="text-align:center;">
-                    <a>Закрыть</a>
+                <div class="b-details_popup_close">
+                    <a href="#">Закрыть</a>
                 </div>
             </div>
         </div>

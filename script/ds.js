@@ -3,10 +3,10 @@
     "use strict";
 
     w.ds = {
-        debugMode: true
+        debugMode: false
     };
     w.ds.gui = {
-        alert: function(message) {
+        alert: function (message) {
             window.alert(message);
         }
     };
